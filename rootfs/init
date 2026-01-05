@@ -4,12 +4,16 @@ mount -t proc none /proc
 mount -t sysfs none /sys
 mount -t devtmpfs none /dev
 
-echo "🔧 Initramfs: locating root filesystem..."
+hostname "$(cat /etc/hostname)"
 
-mkdir -p /newroot
-mount /dev/sda /newroot
+echo
+echo "🌌 NebulaOS v0.1"
+echo "System ready."
+echo
 
-echo "🚀 Switching to real root..."
+# Handle reboot and poweroff signals
+trap 'echo "Rebooting..."; reboot -f' INT TERM
+trap 'echo "Powering off..."; poweroff -f' PWR
 
-exec switch_root /newroot /init
-
+# Start login console
+exec setsid getty -L ttyS0 115200 vt100
