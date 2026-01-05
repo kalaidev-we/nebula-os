@@ -1,19 +1,11 @@
 #!/bin/sh
 
-mount -t proc none /proc
-mount -t sysfs none /sys
-mount -t devtmpfs none /dev
-
 hostname "$(cat /etc/hostname)"
 
 echo
 echo "🌌 NebulaOS v0.1"
-echo "System ready."
+echo "Starting system..."
 echo
 
-# Handle reboot and poweroff signals
-trap 'echo "Rebooting..."; reboot -f' INT TERM
-trap 'echo "Powering off..."; poweroff -f' PWR
-
-# Start login console
-exec setsid getty -L ttyS0 115200 vt100
+# Hand over control to BusyBox init (PID 1)
+exec /sbin/init
