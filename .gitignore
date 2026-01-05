@@ -17,3 +17,6 @@ build/initramfs.img
 # Kernel source archives
 *.tar.xz
 kernel/linux-6.6.tar.xz
+# Runtime disk images
+*.img
+nebula.img
