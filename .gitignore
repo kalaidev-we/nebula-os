@@ -1,0 +1,16 @@
+# Kernel build artifacts
+kernel/linux-6.6/**/*.o
+kernel/linux-6.6/**/*.a
+kernel/linux-6.6/**/*.cmd
+kernel/linux-6.6/**/*.tmp
+kernel/linux-6.6/**/*.mod
+kernel/linux-6.6/**/*.mod.c
+kernel/linux-6.6/**/*.symtypes
+kernel/linux-6.6/**/*.order
+
+# Large generated files
+kernel/linux-6.6/arch/x86/boot/bzImage
+build/initramfs.img
+
+# ISO (later)
+*.iso
