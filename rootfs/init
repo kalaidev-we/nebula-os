@@ -4,12 +4,12 @@ mount -t proc none /proc
 mount -t sysfs none /sys
 mount -t devtmpfs none /dev
 
-# Set hostname
-hostname "$(cat /etc/hostname)"
+echo "🔧 Initramfs: locating root filesystem..."
 
-echo
-echo "🌌 NebulaOS v0.1"
-echo "System booted successfully."
-echo
+mkdir -p /newroot
+mount /dev/sda /newroot
 
-exec /bin/sh
+echo "🚀 Switching to real root..."
+
+exec switch_root /newroot /init
+
