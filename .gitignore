@@ -14,3 +14,6 @@ build/initramfs.img
 
 # ISO (later)
 *.iso
+# Kernel source archives
+*.tar.xz
+kernel/linux-6.6.tar.xz
